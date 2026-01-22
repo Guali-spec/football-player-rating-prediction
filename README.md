@@ -264,3 +264,116 @@ Il constitue une base solide pour :
 * un projet académique,
 * un portfolio technique,
 * ou des travaux futurs en IA appliquée au sport.
+
+
+# Setup et reproductibilité du projet
+
+Ce document décrit pas à pas comment cloner le projet, configurer l’environnement de travail et reproduire les résultats obtenus.
+
+---
+
+## 1. Prérequis
+
+Avant de commencer, assurez-vous d’avoir installé :
+
+- **Python ≥ 3.10**
+- **Git**
+- Un terminal (PowerShell, Terminal, Bash)
+
+Le projet a été testé avec **Python 3.11 / 3.12** et fonctionne entièrement en **CPU**.
+
+---
+
+## 2. Cloner le dépôt
+
+```bash
+git clone https://github.com/Guali-spec/football-player-rating-prediction.git
+cd football-player-rating-prediction
+```
+
+## 3. Créer et activer un environnement virtuel
+## Windows (PowerShell)
+```
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+## Linux / macOS
+```
+python3 -m venv .venv
+source .venv/bin/activate
+```
+## Une fois activé, le terminal doit afficher (.venv)
+
+## 4. Installer les dépendances
+```
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+## 5. Vérifier l’installation (sanity check)
+```
+python src/sanity_check.py
+```
+## Résultat attendu :
+affichage de la version de PyTorch
+chargement du fichier CSV sans erreur
+
+
+6. Entraîner le modèle
+```
+python src/train.py
+```
+
+
+Le meilleur modèle est automatiquement sauvegardé dans :
+```
+outputs/models/best_model.pt
+```
+
+7. Évaluer le modèle
+```
+python src/evaluate.py
+```
+
+
+Ce script affiche :
+```
+
+MAE, RMSE et R² sur le jeu de test
+```
+
+des exemples de prédictions
+
+8. Générer les visualisations
+```
+python src/plots.py
+```
+
+
+Les graphiques sont enregistrés dans:
+
+```
+outputs/logs/
+```
+
+9. Tester des prédictions interprétables (lecture humaine)
+python src/predict_readable.py
+
+
+Ce script affiche des prédictions sous une forme lisible :
+
+```
+note réelle
+
+note prédite
+
+erreur
+
+interprétation qualitative
+```
+
+
+
+
+
