@@ -295,7 +295,7 @@ cd football-player-rating-prediction
 ## Windows (PowerShell)
 ```
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate
 ```
 
 ## Linux / macOS
